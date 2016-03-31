@@ -1,0 +1,24 @@
+@font-face {
+	font-family: $ff_proxima;
+	src: url('/fonts/ProximaNova/ProximaNova-Regular.eot');
+	src: url('/fonts/ProximaNova/ProximaNova-Regular.woff2') format('woff2'),
+		 url('/fonts/ProximaNova/ProximaNova-Regular.woff') format('woff'),
+		 url('/fonts/ProximaNova/ProximaNova-Regular.ttf') format('truetype'),
+		 url('/fonts/ProximaNova/ProximaNova-Regular.svg#ProximaNova-Regular') format('svg'),
+		 url('/fonts/ProximaNova/ProximaNova-Regular.eot?#iefix') format('embedded-opentype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: $ff_proxima_bold;
+	src: url('/fonts/ProximaNovaBold/ProximaNova-Bold.eot');
+	src: url('/fonts/ProximaNovaBold/ProximaNova-Bold.woff2') format('woff2'),
+		 url('/fonts/ProximaNovaBold/ProximaNova-Bold.woff') format('woff'),
+		 url('/fonts/ProximaNovaBold/ProximaNova-Bold.ttf') format('truetype'),
+		 url('/fonts/ProximaNovaBold/ProximaNova-Bold.svg#ProximaNova-Bold') format('svg'),
+		 url('/fonts/ProximaNovaBold/ProximaNova-Bold.eot?#iefix') format('embedded-opentype');
+	font-weight: normal;
+	font-style: normal;
+}
+
