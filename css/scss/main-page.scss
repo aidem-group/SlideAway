@@ -6,10 +6,13 @@ html {
 }
 
 .body {
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
 	background-color: #fff;
 	margin: 0;
-	min-width: 320px;
-	height: 100vh;
 	overflow: hidden;
 }
 
@@ -194,7 +197,7 @@ html {
 		right: 0;
 		bottom: 0;
 		left: 0;
-		background: rgba(255, 255, 255, .1);
+		background: rgba(255, 255, 255, .3);
 
 		@media all and (max-width: 768px) {
 			@include transform(#{skewX(0)});
@@ -217,6 +220,7 @@ html {
 	&_inner {
 		color: #fff;
 		padding: 23px 0 23px 170px;
+		opacity: .7;
 
 		@media all and (max-width: 460px) {
 			padding-left: 0;
@@ -316,6 +320,7 @@ html {
 		text-transform: uppercase;
 		margin: 0 0 30px;
 		text-align: center;
+		white-space: nowrap;
 
 		@media all and (max-width: 600px) {
 			@include font-size(60);
@@ -514,6 +519,8 @@ html {
 			margin: -10px;
 			padding: 0;
 
+			@media all and (max-width: 460px) { width: 70%; }
+
 			&-item {
 				@include box-sizing;
 				display: block;
@@ -585,7 +592,7 @@ html {
 		outline: none;
 		z-index: 1;
 
-		&.error { color: #bb6464; }
+		&.error { color: #000; }
 
 		&[name="name"] {
 			padding-right: 130px;
@@ -618,7 +625,7 @@ html {
 		bottom: -24px;
 		right: 0;
     	margin: 0;
-		color: #bb6464;
+		color: #000;
 		white-space: nowrap;
 	    text-overflow: ellipsis;
 	    overflow: hidden;
@@ -626,7 +633,7 @@ html {
 
 	&_text-input:focus { color: #fff; }
 	&_text-input:focus + &_placeholder { display: none; }
-	&_text-input.error + &_placeholder { color: #bb6464; }
+	&_text-input.error + &_placeholder { color: #000; }
 	&_text-input.error ~ &_error { display: block; }
 
 	&_beginner {
@@ -762,12 +769,25 @@ html {
 	}
 }
 
+.aidem-logo {
+	display: inline-block;
+	position: relative;
+	top: -3px;
+	margin-left: 8px;
+	width: 74px;
+	vertical-align: middle;
+}
+
 .mobile {
 
 	html, &.body {
 		overflow: visible;
 		height: auto;
 		min-height: 0;
+	}
+
+	&.body {
+		position: relative;
 	}
 
 	.slide {
@@ -779,6 +799,13 @@ html {
 		&_content {
 			@include transform(#{none !important});
     		width: 100%;
+		}
+
+		&-3 .slide_block,
+		&-4 .slide_block,
+		&-5 .slide_block,
+		&-6 .slide_block {
+			min-height: 80vw;
 		}
 	}
 
@@ -821,5 +848,15 @@ html {
 	.how-it-will_list-item {
 		@include transform(#{translateX(0) !important});
 		opacity: 1;
+	}
+
+	.com-form_interest-label:hover {
+		background-color: transparent;
+		border-color: #fff;
+	}
+
+	.com-form_interest-checkbox:checked + .com-form_interest-label {
+		border-color: #3782b0;
+    	background-color: #3782b0;
 	}
 }

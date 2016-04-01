@@ -72,12 +72,16 @@ function initSlides()
     var current = 0;
     var total = slides.length;
     var swipeAllowed = true;
+    var tabSwitch = true;
 
     slides.on('mousewheel', switchSlide);
     $('input[type="text"]').on('focus', inputFocus);
 
+
+
     function inputFocus()
     {
+        console.log(2222);
         var self = $(this);
         var slide = self.closest('.slide');
 

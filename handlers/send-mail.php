@@ -52,8 +52,8 @@ mail($mainEmail, $subject, iconv($dc, "{$sc}//IGNORE", $message), $headers);
 
 if($mailchimpData['email']){
 	$params = array(
-		'apiKey' => '241158e6e1de81f12509d927c5f21d91-us13',
-		'listId' => 'ada6ad7261'
+		'apiKey' => '3fc848699384c6053a975afa570c0bc7-us12',
+		'listId' => 'b2e6ff8596'
 	);
 
 	$MailChimp = new MailChimp($params['apiKey']);

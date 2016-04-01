@@ -22,10 +22,13 @@ html {
   font-family: "ProximaNova-Regular"; }
 
 .body {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
   background-color: #fff;
   margin: 0;
-  min-width: 320px;
-  height: 100vh;
   overflow: hidden; }
 
 .svg-blur {
@@ -255,7 +258,7 @@ html {
     right: 0;
     bottom: 0;
     left: 0;
-    background: rgba(255, 255, 255, 0.1); }
+    background: rgba(255, 255, 255, 0.3); }
     @media all and (max-width: 768px) {
       .comment:before {
         -webkit-transform: skewX(0);
@@ -273,7 +276,8 @@ html {
         display: none; } }
   .comment_inner {
     color: #fff;
-    padding: 23px 0 23px 170px; }
+    padding: 23px 0 23px 170px;
+    opacity: .7; }
     @media all and (max-width: 460px) {
       .comment_inner {
         padding-left: 0; } }
@@ -361,7 +365,8 @@ html {
     font-family: "ProximaNova-Bold";
     text-transform: uppercase;
     margin: 0 0 30px;
-    text-align: center; }
+    text-align: center;
+    white-space: nowrap; }
     @media all and (max-width: 600px) {
       .how-it-will_title {
         font-size: 60px;
@@ -554,6 +559,9 @@ html {
       display: block;
       content: '';
       clear: both; }
+    @media all and (max-width: 460px) {
+      .com-form_interest-list {
+        width: 70%; } }
     .com-form_interest-list-item {
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
@@ -618,7 +626,7 @@ html {
     outline: none;
     z-index: 1; }
     .com-form_text-input.error {
-      color: #bb6464; }
+      color: #000; }
     .com-form_text-input[name="name"] {
       padding-right: 130px; }
   .com-form_text-input.not-empty + .com-form_placeholder {
@@ -647,7 +655,7 @@ html {
     bottom: -24px;
     right: 0;
     margin: 0;
-    color: #bb6464;
+    color: #000;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden; }
@@ -656,7 +664,7 @@ html {
   .com-form_text-input:focus + .com-form_placeholder {
     display: none; }
   .com-form_text-input.error + .com-form_placeholder {
-    color: #bb6464; }
+    color: #000; }
   .com-form_text-input.error ~ .com-form_error {
     display: block; }
   .com-form_beginner-checkbox {
@@ -781,10 +789,21 @@ html {
     vertical-align: middle;
     margin-left: 2px; }
 
+.aidem-logo {
+  display: inline-block;
+  position: relative;
+  top: -3px;
+  margin-left: 8px;
+  width: 74px;
+  vertical-align: middle; }
+
 .mobile html, .mobile.body {
   overflow: visible;
   height: auto;
   min-height: 0; }
+
+.mobile.body {
+  position: relative; }
 
 .mobile .slide {
   -webkit-transform: translateY(0) !important;
@@ -798,6 +817,11 @@ html {
     -moz-transform: none !important;
     transform: none !important;
     width: 100%; }
+  .mobile .slide-3 .slide_block,
+  .mobile .slide-4 .slide_block,
+  .mobile .slide-5 .slide_block,
+  .mobile .slide-6 .slide_block {
+    min-height: 80vw; }
 
 .mobile .comment {
   -webkit-transform: translate(-50%, 0) scaleY(1);
@@ -833,3 +857,11 @@ html {
   -moz-transform: translateX(0) !important;
   transform: translateX(0) !important;
   opacity: 1; }
+
+.mobile .com-form_interest-label:hover {
+  background-color: transparent;
+  border-color: #fff; }
+
+.mobile .com-form_interest-checkbox:checked + .com-form_interest-label {
+  border-color: #3782b0;
+  background-color: #3782b0; }
