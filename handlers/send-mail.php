@@ -4,7 +4,7 @@ include 'MailChimp.php';
 
 use \DrewM\MailChimp\MailChimp;
 
-$mainEmail = 'wildwind.flamin@gmail.com';
+$mainEmail = 'info@slideaway.ru';
 
 if (!$_POST) exit();
 
