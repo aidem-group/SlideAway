@@ -1,10 +1,14 @@
 $(function() {
     var isMobile = is_touch_device() || $(window).width() <= 1024;
 
-    if(isMobile) $('.body').addClass('mobile');
-
     $(window).load(function(){
-        if(!isMobile) initSlides();
+        if(isMobile){
+            $('.body').addClass('mobile');
+        } else {
+            initSlides();
+        }
+
+        offersInit();
     });
 
     $('input[type="text"]').on('blur', inputPlaceholder);
@@ -23,6 +27,32 @@ function inputPlaceholder()
         self.addClass('not-empty');
     } else {
         self.removeClass('not-empty');
+    }
+}
+
+function offersInit()
+{
+    $('.offer').each(function(){
+        var obj = $(this);
+        var items = obj.find('.offer_item');
+        var arrows = obj.find('.offer_arrow');
+
+        arrows.on('click', function(){ switchSlide(items, $(this)); });
+    });
+
+    function switchSlide( items, arrow )
+    {
+        var current = items.filter('.current').index();
+        var length = items.length;
+        var next = 0;
+
+        if(arrow.hasClass('prev')){
+            next = current == 0 ? length - 1 : current - 1;
+        } else {
+            next = current + 1 == length ? 0 : current + 1;
+        }
+
+        items.removeClass('current').eq(next).addClass('current');
     }
 }
 
@@ -74,14 +104,14 @@ function initSlides()
     var swipeAllowed = true;
     var tabSwitch = true;
 
-    slides.on('mousewheel', switchSlide);
     $('input[type="text"]').on('focus', inputFocus);
 
-
+    $('.switcher_arrow').on('click', function(){ switchSlide($(this).hasClass('prev') ? 1 : -1); });
+    slides.on('mousewheel', function(e){ switchSlide(e.deltaY); });
+    $('.more').on('click', function(){ switchSlide(false); });
 
     function inputFocus()
     {
-        console.log(2222);
         var self = $(this);
         var slide = self.closest('.slide');
 
@@ -93,13 +123,14 @@ function initSlides()
         }
     }
 
-    function switchSlide( e )
+    function switchSlide( side )
     {
         if(!swipeAllowed) return false;
-        swipeAllowed = false;
-        setTimeout(function(){ swipeAllowed = true; }, 1500);
 
-        var next = current - (e.deltaY < 0 ? -1 : 1);
+        swipeAllowed = false;
+        setTimeout(function(){ swipeAllowed = true; }, 1100);
+
+        var next = !side ? 7 : current - (side < 0 ? -1 : 1);
 
         if(next >= 0 && next < total){
             if(next != 0){
@@ -107,7 +138,10 @@ function initSlides()
             } else {
                 $('video')[0].play();
             }
-            slides.removeClass('current').eq(next).addClass('current');
+            
+            slides.removeClass('prev-page').filter('.current').removeClass('current').addClass('prev-page');
+            slides.eq(next).addClass('current');
+
             current = next;
         }
     }
