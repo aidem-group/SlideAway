@@ -1,9 +1,10 @@
 $(function() {
-    var isMobile = is_touch_device() || $(window).width() <= 1024;
+    var isMobile = is_touch_device() || ($(window).width() <= 1024);
 
     $(window).load(function(){
         if(isMobile){
             $('.body').addClass('mobile');
+            $('.slide_video').remove();
         } else {
             initSlides();
         }
@@ -128,7 +129,7 @@ function initSlides()
         if(!swipeAllowed) return false;
 
         swipeAllowed = false;
-        setTimeout(function(){ swipeAllowed = true; }, 1100);
+        setTimeout(function(){ swipeAllowed = true; }, 1400);
 
         var next = !side ? 7 : current - (side < 0 ? -1 : 1);
 

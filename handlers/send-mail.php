@@ -4,7 +4,7 @@ include 'MailChimp.php';
 
 use \DrewM\MailChimp\MailChimp;
 
-$mainEmail = 'admin@slideaway.ru';
+$mainEmail = 'SlideAway <info@slideaway.ru>';
 
 if (!$_POST) exit();
 
@@ -14,7 +14,7 @@ $name = 'Request';
 
 $header = array(
 	'name'      => mime_header_encode($name, $dc, $sc),
-	'emailFrom' => mime_header_encode($mainEmail, $dc, $sc),
+	'emailFrom' => mime_header_encode('admin@slideaway.ru', $dc, $sc),
 	'email'     => mime_header_encode($mainEmail, $dc, $sc)
 );
 

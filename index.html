@@ -10,21 +10,27 @@
 	<link rel="shortcut icon" href="/favicon.ico">
 </head>
 <body class="body">
+	<a class="logo" href="/">
+		<img src="/img/logo.png" alt="">
+	</a>
 	<header class="header slide current">
 		<div class="slide-1">
 			<div class="slide_content">
 				<div class="slide_block"></div>
-				<video class="slide_video" poster="/img/dummy.jpg" autoplay loop>
+				<video autobuffer="true" loop="true" muted="true" autoplay="true" class="slide_video">
 				    <source src="/videos/SlideAway.mp4" type="video/mp4">
 				    <source src="/videos/SlideAway.webm" type="video/webm">
+				    <div class="slide_video-is-empty"></div>
 				</video>
 				<div class="slide_inner">
+					<a class="logo__big" href="/">
+						<img src="/img/logo_big.png" alt="">
+					</a>
 					<p class="description">
 						Сервис для тех, кто ищет новых впечатлений на&nbsp;отдыхе,<br>
 						но&nbsp;не&nbsp;знает где и&nbsp;как их&nbsp;найти
 					</p>
 				</div>
-				<div class="slide_bg slide-1_bg"></div>
 			</div>
 		</div>
 	</header>
@@ -421,7 +427,7 @@
 								<div class="com-form_bottom">
 									<button type="submit" class="com-form_send-request" name="request">Отправить заявку</button>
 									<div class="com-form_info">
-										или свяжитесь сами<br>
+										или свяжитесь с нами<br>
 										<a href="tel:+79217560263">+ 7 (921) 756-02-63</a><br>
 										<a href="mailto:info@slideaway.ru">info@slideaway.ru</a>
 									</div>
@@ -429,7 +435,7 @@
 							</div>
 							<div class="com-form_request-sended">
 								Заявка успешно отправлена!<br>
-								Мы&nbsp;свяжемся с&nbsp;тобой в&nbsp;течении нескольких часов.<br>
+								Мы&nbsp;свяжемся с&nbsp;тобой в&nbsp;течение нескольких часов.<br>
 								А&nbsp;пока ты&nbsp;можешь подписаться на&nbsp;нашу рассылку ниже
 							</div>
 						</form>
@@ -485,7 +491,6 @@
 			<div class="slide_bg slide-9_bg"></div>
 		</div>
 	</section>
-	<a href="/"><span class="logo"></span></a>
 	<button class="more">Узнать больше</button>
 	<div class="switcher">
 		<button class="switcher_arrow prev"></button>
