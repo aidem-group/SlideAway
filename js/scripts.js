@@ -1,3 +1,5 @@
+var timeoutId = 0;
+
 $(function() {
     var isMobile = is_touch_device() || ($(window).width() <= 1024);
 
@@ -40,20 +42,54 @@ function offersInit()
 
         arrows.on('click', function(){ switchSlide(items, $(this)); });
     });
+}
 
-    function switchSlide( items, arrow )
+function switchSlide( items, arrow )
+{
+    var current = items.filter('.current').index();
+    var length = items.length;
+    var next = 0;
+
+    if(arrow.hasClass('prev')){
+        next = current == 0 ? length - 1 : current - 1;
+    } else {
+        next = current + 1 == length ? 0 : current + 1;
+    }
+
+    items.removeClass('current').eq(next).addClass('current');
+}
+
+function switchSlideAuto( items )
+{
+    var parent = items.closest('.offer_inner');
+    var isSlideAutoSwitch = true;
+
+    clearTimeout(timeoutId);
+
+    parent.on('mouseenter mouseleave', function(e){
+        if(e.type == 'mouseenter') {
+            isSlideAutoSwitch = false;
+        } else if(e.type == 'mouseleave') {
+            isSlideAutoSwitch = true;
+        }
+    });
+
+    switcher();
+
+    function switcher()
     {
-        var current = items.filter('.current').index();
-        var length = items.length;
-        var next = 0;
+        timeoutId = setTimeout(nextOffer, 4000);
+    }
 
-        if(arrow.hasClass('prev')){
-            next = current == 0 ? length - 1 : current - 1;
-        } else {
-            next = current + 1 == length ? 0 : current + 1;
+    function nextOffer()
+    {
+        if(isSlideAutoSwitch){
+            var current = items.filter('.current').index();
+
+            items.removeClass('current').eq(current + 1 == items.length ? 0 : current + 1).addClass('current');
         }
 
-        items.removeClass('current').eq(next).addClass('current');
+        switcher();
     }
 }
 
@@ -132,6 +168,8 @@ function initSlides()
         setTimeout(function(){ swipeAllowed = true; }, 1400);
 
         var next = !side ? 7 : current - (side < 0 ? -1 : 1);
+        var nextSlide = slides.eq(next);
+        var nextSlideOffers = nextSlide.find('.offer_item');
 
         if(next >= 0 && next < total){
             if(next != 0){
@@ -141,7 +179,9 @@ function initSlides()
             }
             
             slides.removeClass('prev-page').filter('.current').removeClass('current').addClass('prev-page');
-            slides.eq(next).addClass('current');
+            nextSlide.addClass('current');
+
+            if(nextSlideOffers.length > 0) switchSlideAuto(nextSlideOffers);
 
             current = next;
         }
